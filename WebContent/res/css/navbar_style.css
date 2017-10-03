@@ -1,0 +1,26 @@
+
+nav{
+	display: block;
+	width:100%;
+	
+}
+nav ul{
+	float:right;	
+}
+nav ul li{
+	display:inline-block;
+	padding:15px;	
+}
+nav ul li a{
+	display:inline-block;
+	color:white;
+	text-decoration:none;
+	padding:15px;	
+}
+nav ul li a:hover{
+	border:1px solid white;
+	border-radius:8px;
+	text-decoration: none;
+	color:white;
+	transition: border 2s;
+}

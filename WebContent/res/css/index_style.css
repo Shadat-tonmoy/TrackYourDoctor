@@ -1,0 +1,36 @@
+*{
+	margin:0px;
+	padding:0px;
+	overflow-x:hidden;
+}
+body{
+	background-image : url(..//images/bg.jpg);
+	background-repeat:no-repeat;
+	background-size:100%;
+	background-attatchment:fixed;
+}
+.counter{
+	
+	display:block;
+	width:100%;
+	color:white;
+	font-size:1.3em;
+	text-align:center;	
+}
+.counter h4{
+	display:inline-block;
+	width:12%;
+	padding:1.5em;
+	margin-right:15px;
+	margin-bottom:-5px;
+	background:rgba(52, 73, 94,0.7);
+	border-left:2px solid rgba(39, 174, 96,1);
+	font-size:1.5em;
+}
+.counter span{
+	display:inline-block;
+	width:12%;
+	margin-right:15px;
+	padding:7px;
+	background:rgba(39, 174, 96,1)
+}

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="res/css/signup_style.css"/>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style type="text/css">
+	.material-icons{
+	font-size:10em;
+	display:block;
+	text-align:center;
+	overflow:hidden;
+	color:white;
+	}
+	.success{		
+    	color: #00C853;
+    	display: inline-block;
+	}
+	.link_icon{	
+    font-size: 1.5em;
+    display: inline;
+}
+</style>
+
+
+
+</head>
+<body>
+<div ng-controller="signupController">
+	<center style="color:white" ng-show="isRegistered">
+		<i class="material-icons success">offline_pin</i>
+		<div class="success_msg">			
+			<h4>Congratulation!! You Are Successfully Registered. Please wait while you are redirected.....</h4>	
+			<!--<a href="#!login"><i class="material-icons link_icon">touch_app</i>  Click here to login</a>-->
+		</div>
+	</center>
+	
+	<center ng-hide="isRegistered">
+		
+		<form class="form" ng-submit="signupSubmit()" name="signupForm">
+		<i class="material-icons">account_circle</i>
+			
+			<span>
+				First Name :
+			</span>
+	
+			<input 
+				class="" 
+				type="text" 
+				placeholder="Enter Your First Name" 
+				name="firstName" 
+				ng-model="firstName"
+				required="true"
+				minlength="3"
+				ng-focus="firstNameFocus=true"
+			/>
+			
+			<div class="tool-tip" ng-show="firstNameFocus">
+				<span class="arrow"></span>
+				<span class="tip" ng-show="signupForm.firstName.$error.required">Field is required</span>
+				<span class="tip" ng-show="signupForm.firstName.$error.minlength">Value is too short </span>
+				<span class="tip" ng-hide="signupForm.firstName.$error.minlength || signupForm.firstName.$error.required">First Name is submittable</span>
+			</div>
+	
+	
+			<span>
+				Last Name :
+			</span>
+			<input 
+				class="" 
+				type="text" 
+				placeholder="Enter Your Last Name" 
+				name="lastName"
+				required="true"
+				minlength="3"
+				ng-model="lastName"
+				ng-focus="lastNameFocus=true" 
+				/>
+	
+			<div class="tool-tip" ng-show="lastNameFocus">
+				<span class="arrow"></span>
+				<span class="tip" ng-show="signupForm.lastName.$error.required">Field is required</span>
+				<span class="tip" ng-show="signupForm.lastName.$error.minlength">Value is too short </span>
+				<span class="tip" ng-hide="signupForm.lastName.$error.minlength || signupForm.lastName.$error.required">Last Name is submittable</span>
+			</div>
+			
+			<span>
+				Password :
+			</span>
+			<input 
+				class="" 
+				type="password"
+				placeholder="Enter Your Password"
+				name="password"
+				required="true" 
+				minlength="6" 
+				ng-model="password"
+				ng-focus="passwordFocus=true"
+				/>
+			<div class="tool-tip" ng-show="passwordFocus">
+				<span class="arrow"></span>
+				<span class="tip" ng-show="signupForm.password.$error.required">Field is required</span>
+				<span class="tip" ng-show="signupForm.password.$error.minlength">Value is too short </span>
+				<span class="tip" ng-hide="signupForm.password.$error.minlength || signupForm.password.$error.required">Password is submittable</span>
+			</div>
+	
+	
+			<span>
+				Password Repeat :
+			</span>
+			<input 
+				class="" 
+				type="password" 
+				placeholder="Enter Your Password Again" 
+				name="passwordAgain"
+				required="true" 
+				minlength="6" 
+				ng-model="passwordAgain"
+				ng-focus="passwordAgainFocus=true"
+			/>
+			<div class="tool-tip" ng-show="passwordAgainFocus">
+				<span class="arrow"></span>
+				<span class="tip" ng-show="signupForm.passwordAgain.$error.required">Field is required</span>
+				<span class="tip" ng-show="signupForm.passwordAgain.$error.minlength">Value is too short </span>
+				<span class="tip" ng-show="password!=passwordAgain">Password not matched </span>
+				<span class="tip" ng-hide="signupForm.passwordAgain.$error.minlength || signupForm.passwordAgain.$error.required || password!=passwordAgain">Password matched</span>
+			</div>
+			
+			<span>
+				Email  :
+			</span>
+			<input 
+				class="" 
+				type="email"
+				placeholder="Enter Your Email" 
+				name="email"
+				ng-model="email"
+				required="true"
+				ng-focus="emailFocus=true"
+				ng-blur="checkEmail()" 
+				/>
+			<div class="tool-tip" ng-show="emailFocus">
+				<span class="arrow"></span>
+				<span class="tip" ng-show="signupForm.email.$error.required">Field is required</span>
+				<span class="tip" ng-show="signupForm.email.$error.email">Enter a valid email</span>
+				<span class="tip" ng-hide="isEmailOk">The email is already registered</span>
+				<span class="tip" ng-hide="signupForm.email.$error.email || signupForm.email.$error.required || !isEmailOk">Email is submittable</span>
+			</div>
+			<br><br>
+			<br>
+			<input name="signup" type="submit" value="Sign Up"/>
+			<input name="reset" type="reset" value="Reset All Fields"/>
+			
+			
+			
+		</form>
+	</center>
+</div>
+
+</body>
+</html>

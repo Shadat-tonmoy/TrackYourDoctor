@@ -1,0 +1,21 @@
+{
+  "name": "DB_Project",
+  "authors": [
+    "Shadat Tonmoy <shadat.tonmoy@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-date": "^1.0.1"
+  }
+}

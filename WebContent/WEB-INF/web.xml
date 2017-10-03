@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <servlet>
+    <servlet-name>Doctor Panel</servlet-name>
+    <servlet-class>docs.DoctorPanel</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Doctor Panel</servlet-name>
+    <url-pattern>/doctor</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Check Email</servlet-name>
+    <servlet-class>docs.CheckEmail</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Check Email</servlet-name>
+    <url-pattern>/checkemail</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Doctor Signup</servlet-name>
+    <servlet-class>docs.DoctorSignUp</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Doctor Signup</servlet-name>
+    <url-pattern>/doctorsignup</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Doctor Login</servlet-name>
+    <servlet-class>docs.DoctorLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Doctor Login</servlet-name>
+    <url-pattern>/doctorlogin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Doctor Dashboard</servlet-name>
+    <servlet-class>docs.DoctorDashboard</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Doctor Dashboard</servlet-name>
+    <url-pattern>/doctordashboard</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Update Doctor Detail</servlet-name>
+    <servlet-class>docs.UpdateDoctorDetail</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Update Doctor Detail</servlet-name>
+    <url-pattern>/updatedoctordetail</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Get Doctor Detail</servlet-name>
+    <servlet-class>docs.GetDoctorDetail</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Get Doctor Detail</servlet-name>
+    <url-pattern>/getdoctordetail</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Get Doctor Clinic</servlet-name>
+    <servlet-class>docs.GetDoctorClinic</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Get Doctor Clinic</servlet-name>
+    <url-pattern>/getdoctorclinic</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Add Doctor Clinic</servlet-name>
+    <servlet-class>docs.AddDoctorClinic</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Add Doctor Clinic</servlet-name>
+    <url-pattern>/adddoctorclinic</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Delete Doctor Clinic</servlet-name>
+    <servlet-class>docs.DeleteDoctorClinic</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Delete Doctor Clinic</servlet-name>
+    <url-pattern>/deletedoctorclinic</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Add Doctor Schedule</servlet-name>
+    <servlet-class>docs.AddDoctorSchedule</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Add Doctor Schedule</servlet-name>
+    <url-pattern>/adddoctorschedule</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Get Doctor Schedule</servlet-name>
+    <servlet-class>docs.GetDoctorSchedule</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Get Doctor Schedule</servlet-name>
+    <url-pattern>/getdoctorschedule</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Get Single Schedule</servlet-name>
+    <servlet-class>docs.GetSingleSchedule</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Get Single Schedule</servlet-name>
+    <url-pattern>/getsingleschedule</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Update Single Schedule</servlet-name>
+    <servlet-class>docs.UpdateSingleSchedule</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Update Single Schedule</servlet-name>
+    <url-pattern>/updatesingleschedule</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Delete Single Schedule</servlet-name>
+    <servlet-class>docs.DeleteDoctorSchedule</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Delete Single Schedule</servlet-name>
+    <url-pattern>/deletesingleschedule</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Patient Welcome</servlet-name>
+    <servlet-class>docs.PatientWelcome</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Patient Welcome</servlet-name>
+    <url-pattern>/patient</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Patient Signup</servlet-name>
+    <servlet-class>docs.PatientSignUp</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Patient Signup</servlet-name>
+    <url-pattern>/patientsignup</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Patient Login</servlet-name>
+    <servlet-class>docs.PatientLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Patient Login</servlet-name>
+    <url-pattern>/patientlogin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Patient Dashboard</servlet-name>
+    <servlet-class>docs.PatientDashboard</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Patient Dashboard</servlet-name>
+    <url-pattern>/patientdashboard</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Get Patient Detail</servlet-name>
+    <servlet-class>docs.GetPatientDetail</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Get Patient Detail</servlet-name>
+    <url-pattern>/getpatientdetail</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Get Doctor To Appoint</servlet-name>
+    <servlet-class>docs.GetDoctorToAppoint</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Get Doctor To Appoint</servlet-name>
+    <url-pattern>/getdoctortoappoint</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Add Doctor Appointment</servlet-name>
+    <servlet-class>docs.AddDoctorAppointment</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Add Doctor Appointment</servlet-name>
+    <url-pattern>/adddoctorappointment</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Get Upcoming Appointment for Patient</servlet-name>
+    <servlet-class>docs.GetUpcomingAppointmentForPatient</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Get Upcoming Appointment for Patient</servlet-name>
+    <url-pattern>/getupcomingappointmentforpatient</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Delete Appointment</servlet-name>
+    <servlet-class>docs.DeleteDoctorAppointment</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Delete Appointment</servlet-name>
+    <url-pattern>/deletedoctorappointment</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Get Todays Appointment for Patient</servlet-name>
+    <servlet-class>docs.GetTodaysAppointmentForPatient</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Get Todays Appointment for Patient</servlet-name>
+    <url-pattern>/gettodaysappointmentforpatient</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Get Doctor Schedule for date</servlet-name>
+    <servlet-class>docs.GetDoctorScheduleForDate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Get Doctor Schedule for date</servlet-name>
+    <url-pattern>/getdoctorschedulefordate</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  <display-name>Doctor</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

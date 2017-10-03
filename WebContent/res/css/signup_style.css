@@ -1,0 +1,97 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+body{
+	background-image: url(..//images/loginbg.jpg);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+form{
+	background-color: rgba(189, 195, 199,0.5);
+	color: white;
+	padding: 35px;
+	width:60%;
+	border-radius:5px;
+	vertical-align:middle;
+}
+form span{
+	display:block;
+	margin-bottom:20px;
+	margin-top:20px;
+	font-size:1.2em;
+	font-family:sans-serif;
+}
+form input{
+	color:black;
+	width:75%;
+	padding:8px;
+	border-radius:5px;
+	border:1px solid rgba(52, 152, 219,1.0);
+}
+form input[type="submit"][name="signup"]{
+	
+	width: 30%;
+	background-color: transparent;
+	border:1px solid white;
+	color:white;
+	padding:10px;
+	font-size:1em;
+	cursor:pointer;
+}
+form input[type="reset"]{
+	
+	width: 30%;
+	background-color: transparent;
+	border:1px solid red;
+	color:white;
+	padding:10px;
+	font-size:1em;
+	cursor:pointer;
+}
+.tool-tip{	
+    display: inline;	
+}
+.arrow{	
+    margin: 0px 0px 0px -1%;
+    position: absolute;
+    display: inline-block;
+    width: 0px;
+    height: 0px;
+    border-left: 15px solid transparent;
+    border-right: 15px solid rgba(52, 73, 94,0.9);
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+	
+}
+.tip{ 
+    display: inline;
+    margin-left: 1.9%;
+    margin-top: -1.2%;
+    position: absolute;
+    height: 55px;
+    line-height: 55px;
+    background: rgba(52, 73, 94,0.9);
+    width: 25%;
+    border-radius: 5px;
+    color:white;	
+}
+a{
+	font-size:1.5em;
+	color:#ecf0f1;
+	text-decoration:none;
+}
+a:hover{
+	color:#bdc3c7;
+	text-decoration:none;
+	transition:color 1.5s;
+}
+.success_msg{
+	
+    background: rgba(39, 174, 96,0.8);
+    width: 60%;
+    border-radius: 5px;
+    padding: 10px;
+    border-left: 5px solid white;
+}
+

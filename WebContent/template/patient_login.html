@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="res/css/login_style.css"/>
+<script></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style type="text/css">
+	.material-icons{
+	font-size:10em;
+	display:block;
+	text-align:center;
+	overflow:hidden;
+	color:white;
+	}
+	
+	.success{		
+    	color: #00C853;
+    	display: inline-block;
+	}
+	.error{
+		color:rgba(231, 76, 60,1.0);
+		display: inline-block;
+	}
+
+
+</style>
+</head>
+<body ng-app="publisherApp">
+
+<div ng-controller="loginController">
+	
+	
+	<center style="color:white" ng-show="isLoggedIn">
+		<i class="material-icons success">offline_pin</i>
+		<div class="success_msg">			
+			<h3>You are successfully logged in. Please Wait...</h3>			
+		</div>
+	</center>
+	
+	<center style="color:white" ng-show="isIncorrect">
+		<i class="material-icons error">error</i>
+		<div class="error_msg">			
+			<h3>User Name or Password is incorrect. Please try again</h3>			
+		</div>
+	</center>
+
+	
+	<center ng-hide="isLoggedIn">
+			
+		<form class="form" name="loginForm" ng-submit="loginSubmit()">
+		<i class="material-icons">person</i>
+			<span>
+				Email :
+			</span>
+			<input 
+				class="form-control" 
+				type="text" 
+				placeholder="Enter Your Email" 
+				name="email"
+				ng-model="email"
+				required="true"
+				minlength="3"
+				ng-focus="emailFocus=true"				
+				/>
+				
+			<div class="tool-tip" ng-show="emailFocus">
+				<span class="arrow"></span>
+				<span class="tip" ng-show="loginForm.email.$error.required">Field is required</span>
+				<span class="tip" ng-show="loginForm.email.$error.minlength">Value is too short </span>
+				<span class="tip" ng-hide="loginForm.email.$error.minlength || loginForm.email.$error.required">Email is submittable</span>
+			</div>
+			
+			<span>
+				Password : 
+			</span>
+			<input 
+				class="form-control" 
+				type="password" 
+				placeholder="Enter Your Password" 
+				name="password"
+				ng-model="password"
+				ng-focus="passwordFocus=true"
+				required="true"
+				minlength="6"
+				/>
+			<div class="tool-tip" ng-show="passwordFocus">
+				<span class="arrow"></span>
+				<span class="tip" ng-show="loginForm.password.$error.required">Field is required</span>
+				<span class="tip" ng-show="loginForm.password.$error.minlength">Value is too short </span>
+				<span class="tip" ng-hide="loginForm.password.$error.minlength || loginForm.password.$error.required">Password is submittable</span>
+			</div>
+			<input name="login" type="submit" value="Login"/>
+			<br><br>
+			<a href="#" class="forgot">Forgot Your Password?</a>
+			
+		</form>
+	</center>
+</div>
+</body>
+</html>

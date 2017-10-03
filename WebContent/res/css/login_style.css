@@ -1,0 +1,129 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+body{
+	background-image: url(..//images/loginbg.jpg);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+form{
+	background-color: rgba(189, 195, 199,0.5);
+	color: white;
+	padding: 35px;
+	width:35%;
+	border-radius:5px;
+	vertical-align:middle;
+	margin-top:2%;
+}
+form span{
+	display:block;
+	margin-bottom:20px;
+	margin-top:20px;
+	font-size:1.2em;
+	font-family:sans-serif;
+}
+form input{
+	width:75%;
+	padding:8px;
+	border-radius:5px;
+	border:1px solid rgba(52, 152, 219,1.0);
+}
+form input[type="submit"][name="login"]{
+	
+	width: 50%;
+	background-color: transparent;
+	border:1px solid white;
+	color:white;
+	padding:10px;
+	font-size:1em;
+	cursor:pointer;
+	margin-top:10%;
+}
+form input[type="reset"]{
+	
+	width: 20%;
+	background-color: transparent;
+	border:1px solid red;
+	color:white;
+	padding:10px;
+	font-size:1em;
+	cursor:pointer;
+}
+.forgot{
+	color:rgba(236, 240, 241,1.0);
+	text-decoration:none;
+	margin-top:2%;
+}
+.forgot:hover{
+	color:rgba(189, 195, 199,1.0);
+	text-decoration:none;
+	transition:color 1s;
+	
+}
+
+.tool-tip{	
+    display: inline-block;
+    margin-left: 98%;
+    margin-top: -11%;
+}
+.arrow{	
+    margin: 0px 0px 0px -1%;
+    position: absolute;
+    display: inline-block;
+    width: 0px;
+    height: 0px;
+    border-left: 15px solid transparent;
+    border-right: 15px solid rgba(52, 73, 94,0.9);
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+	
+}
+.tip{ 
+    display: inline;
+    margin-left: 1.9%;
+    margin-top: -1.2%;
+    position: absolute;
+    height: 55px;
+    line-height: 55px;
+    background: rgba(52, 73, 94,0.9);
+    width: 25%;
+    border-radius: 5px;
+    color:white;	
+}
+.success_msg{
+	color:white;
+    background: rgba(39, 174, 96,0.8);
+    width: 60%;
+    border-radius: 5px;
+    padding: 10px;
+    border-left: 5px solid white;
+}
+.success_msg_patient{
+	color:white;
+    background: rgba(39, 174, 96,0.8);
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    border-left: 5px solid white;
+}
+
+.error_msg{
+	color:white;
+    background: rgba(231, 76, 60,0.8);
+    width: 60%;
+    border-radius: 5px;
+    padding: 10px;
+    border-left: 5px solid white;
+	
+}
+
+.error_msg_patient{
+	color:white;
+    background: rgba(231, 76, 60,0.8);
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    border-left: 5px solid white;
+	
+}
