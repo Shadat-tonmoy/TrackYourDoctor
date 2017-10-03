@@ -40,7 +40,7 @@ public class GetDoctorScheduleForDate extends HttpServlet {
     	if(connectionSuccess)
     	{
     		String date = request.getParameter("date");
-    		System.out.println("Date is "+date);
+    		//System.out.println("Date is "+date);
 			int rows=0;
 			
 			Connection conn = connection.connection;

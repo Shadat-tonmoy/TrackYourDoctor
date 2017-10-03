@@ -58,3 +58,20 @@ body{
 	font-size: 1.2em;
 }
 
+.noAppointForTodayMsg{
+
+    display: block;
+    background: #e74c3c;
+    padding: 20px;
+    font-size: 1.5em;
+    color: white;
+    border-left: 5px solid white;
+    margin-top: 17vh;
+}
+.noAppointForTodayDiv{
+    background: rgba(189, 195, 199,0.7);
+    height: 50vh;
+    margin-top: 25vh;
+    width: 95%;
+}
+

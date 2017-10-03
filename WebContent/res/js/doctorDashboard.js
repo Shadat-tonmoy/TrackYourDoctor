@@ -402,13 +402,13 @@ app.controller("doctorDashboardController",function($scope,$rootScope,$http,$tim
 			}
 		})
 	}
-	
 	$scope.getScheduleForDate = function(dateToParse){
 		var day = dateToParse.day;
 		var month = dateToParse.month;
 		var year = dateToParse.year;
 		var date = dateToParse.date;
 		var monthNum;
+		
 		switch (month.trim()){
 			case "January" :
 				monthNum = 1;
@@ -454,16 +454,97 @@ app.controller("doctorDashboardController",function($scope,$rootScope,$http,$tim
 			url:"getdoctorschedulefordate?date="+finalDate
 		}).then(function(response){
 			console.log(response.data);
-//			if(response.data.trim()=="true" || response.data.trim()=="true2")
-//			{
-//				
-//				$rootScope.isClinicDeleted = true;				
-//				window.location.href = "#!managedoctorclinic";
-//				$timeout(function(){
-//					//alert("Will hide");
-//					$rootScope.isClinicDeleted = false;
-//				},3000)
-//			}
+			var isObject = angular.isObject(response.data);
+			if(isObject)
+			{
+				$scope.appointmentsForDate = response.data;
+				$scope.noAppointmentFound = false;
+				
+			}
+			else if(response.data.trim()=="0")
+			{
+				$scope.noAppointmentFound = true;
+				$scope.appointmentsForDate = null;
+				$scope.dateToShowForNoAppointment = date+","+month+" "+year; 	
+			}
+		})
+		
+	}
+	
+	$scope.setDateForCancelAllSchedule = function(date)
+	{
+		$scope.dateForCancelAllSchedule = date.date+","+date.month+" "+
+		date.year;
+		$scope.dateToParse = date;
+	}
+	$scope.allScheduleDeleteForDateSuccess = false;
+	$scope.deleteAllScheduleForDate = function()
+	{
+		var dateToParse = $scope.dateToParse; 
+		var day = dateToParse.day;
+		var month = dateToParse.month;
+		var year = dateToParse.year;
+		var date = dateToParse.date;
+		var monthNum;
+		
+		switch (month.trim()){
+			case "January" :
+				monthNum = 1;
+				break;
+			case "February" :
+				monthNum = 2;
+				break;
+			case "March" :
+				monthNum = 3;
+				break;
+			case "April" :
+				monthNum = 4;
+				break;
+			case "May" :
+				monthNum = 5;
+				break;
+			case "June" :
+				monthNum = 6;
+				break;
+			case "July" :
+				monthNum = 7;
+				break;
+			case "August" :
+				monthNum = 8;
+				break;
+			case "September" :
+				monthNum = 9;
+				break;
+			case "October" :
+				monthNum = 10;
+				break;
+			case "November" :
+				monthNum = 11;
+				break;
+			case "December" :
+				monthNum = 12;
+				break;
+		}
+		var finalDate = year + "-" + monthNum + "-" + date;
+		console.log(finalDate);
+
+		$http({
+			method:"POST",
+			url:"deleteallschedulefordate?date="+finalDate
+		}).then(function(response){
+			console.log(response.data);
+			if(response.data.trim()=="1")
+			{
+				$scope.allScheduleDeleteForDateSuccess = true;
+				$timeout(function(){
+					$scope.allScheduleDeleteForDateSuccess = false;
+				},3000)
+				
+			}
+			else if(response.data.trim()=="0")
+			{
+				
+			}
 		})
 		
 	}
