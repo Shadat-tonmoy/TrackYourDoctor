@@ -31,6 +31,16 @@ ul li a:link{
 	cursor:pointer;
 	font-size:1.5em;
 }
+#todaySchedule{
+	
+	display:inline-block;
+	text-decoration:none;
+	color:white;
+	padding:20px;
+	cursor:pointer;
+	font-size:1.5em;
+	
+}
 ul li a:visited {
 	color:#ecf0f1;
 	border-left:3px solid #ecf0f1;
@@ -42,6 +52,13 @@ ul li a:hover{
 	transition:color 2s;
 	transition:border-left 0.5s;
 }
+/*#todaysSchedule:hover{
+	border-left:3px solid white;
+	color:#ecf0f1;
+	text-decoration:none;
+	transition:color 2s;
+	transition:border-left 0.5s;
+}*/
 
 .glyphicon{
 	display:inline-block;
@@ -134,4 +151,32 @@ ul li a:hover{
 }
 .profile_msg h5{
 	font-size:1.2em;
+}
+.clinic_list{
+	color:white;
+}
+.clinic_list h4{
+	background:rgba(230, 126, 34,1.0);
+	padding:15px;
+}
+.clinic_list ul{
+	display:block;
+	color:white;
+	height:auto;
+}
+.clinic_list ul li a{
+	font-size:1em;
+	color:white;
+	display:block;
+	padding:10px;
+	margin-left:5%;
+	
+}
+.clinic_list ul li a:hover{
+	cursor:pointer;
+	border-left:3px solid white;
+	color:#ecf0f1;
+	text-decoration:none;
+	transition:color 2s;
+	transition:border-left 0.5s;
 }

@@ -549,6 +549,67 @@ app.controller("doctorDashboardController",function($scope,$rootScope,$http,$tim
 		
 	}
 	
+	$scope.clinicListVisible = false;
+	$scope.toggleClinicListVisibility = function(id)
+	{
+		
+		$http({
+			method:"GET",
+			url:"getdoctorclinic?id="+id
+		}).then(function(response){
+			console.log(response.data);
+			var isObject = angular.isObject(response.data);
+			if(isObject)
+			{
+				$scope.clinicList = response.data;
+				//$scope.noAppointmentFound = false;
+				
+			}
+			else if(response.data.trim()=="0")
+			{
+				 	
+			}
+		})
+		
+		if($scope.clinicListVisible)
+			$scope.clinicListVisible = false;
+		else $scope.clinicListVisible = true;
+			
+	}
+	$scope.noAppointmentFoundForToday = false;
+	$scope.getTodaysAppointmentForDoctor = function (id,clinicId)
+	{
+		
+		var dateToParse = new Date(); 
+		var day = dateToParse.getDay();
+		var month = dateToParse.getMonth()+1;
+		var year = dateToParse.getFullYear();
+		var date = dateToParse.getDate();
+		var finalDate = "2017" + "-" + "10" + "-" + "7";
+		console.log(finalDate);
+		$http({
+			method:"GET",
+			url:"gettodaysappointmentfordoctor?doctor_id="+id+"&clinic_id="+
+			clinicId+"&date="+finalDate
+		}).then(function(response){
+			console.log(response.data);
+			var isObject = angular.isObject(response.data);
+			if(isObject)
+			{
+				$scope.todaysAppointmentForDoctor = response.data;
+				$scope.noAppointmentFoundForToday = false;
+				
+			}
+			else if(response.data.trim()=="0")
+			{
+				$scope.noAppointmentFoundForToday = true;
+				$scope.todaysAppointmentForDoctor = null;
+			}
+		})
+		
+		
+	}
+	
 	
 	
 });
@@ -577,6 +638,9 @@ app.config(function($routeProvider){
 	})	
 	.when("/upcomingschedule",{
 		templateUrl:"template/doctor_upcoming_schedule.jsp"
+	})	
+	.when("/todaysschedulefordoctor",{
+		templateUrl:"template/doctor_todays_schedule.jsp"
 	})	
 	.when("/schedulefordate",{
 		templateUrl:"template/doctor_upcoming_schedule_for_date.jsp"

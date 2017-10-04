@@ -16,6 +16,13 @@
 
 </head>
 <body ng-app="dashboardApp">
+<%
+	Integer idObject = (Integer)session.getAttribute("doctor_id");
+	int id=-1;
+	if(idObject!=null)
+		id = idObject.intValue();
+
+%>
 <%@ include file="bootstrap.html" %>
 <div class="row" ng-controller="doctorDashboardController">
 	<div class="col-lg-3 left" style="position:fixed">
@@ -23,6 +30,23 @@
 			<li><a href="#!/"> <span class="glyphicon glyphicon-user"> </span> Dashboard</a></li>
 			<li><a href="#!account"> <span class="glyphicon glyphicon-user"> </span> Your Account</a></li>
 			<li><a href="#!visitingschedule"> <span class="glyphicon glyphicon-cloud-upload"> </span> Visiting Schedule</a></li>
+			<li ng-click="toggleClinicListVisibility(<%= id %>)">
+				<a id="todaySchedule"> 
+				<span class="glyphicon glyphicon-cloud-upload"> </span> 
+				Today's Schedule
+				</a>
+				<div ng-show="clinicListVisible"  class="clinic_list">
+					<h4>Please Choose a chamber : </h4>
+					<ul>
+						<li ng-click="getTodaysAppointmentForDoctor(<%=id %>,clinic.id)"
+						 	ng-repeat="clinic in clinicList">
+							<a href="#!todaysschedulefordoctor">{{clinic.clinicName}}</a>
+						</li>
+						
+					</ul>
+				</div>
+			
+			</li>
 			<li><a href="#!upcomingschedule"> <span class="glyphicon glyphicon-cloud-upload"> </span> Upcoming Schedule</a></li>
 			<li><a href="#!notification"><span class="glyphicon glyphicon-bell"></span> Notifications </a></li>			
 			<li><a href="#!managedoctorclinic"><span class="glyphicon glyphicon-folder-open"></span> Manage Chamber</a></li>
