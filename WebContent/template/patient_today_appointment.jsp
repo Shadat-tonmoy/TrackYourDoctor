@@ -100,6 +100,9 @@ You have {{todaysAppointment.length}} appointments today
 	 				<i style="cursor:pointer;color:#000000;font-size: 2.5em;"
 	 				class="material-icons">delete-forever</i>
 	 			</a>
+	 			<a ng-click="getLiveSerial(<%= patientId %>,schedule.doctorId,schedule.clinicId)" href="#!viewliveserials">
+	 				View Live Serials
+	 			</a>
 	 			
 	 		</div>
 	 	</div> 

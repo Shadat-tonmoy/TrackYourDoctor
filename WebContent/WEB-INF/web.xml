@@ -200,7 +200,6 @@
     <servlet-name>Get Todays Appointment for Patient</servlet-name>
     <url-pattern>/gettodaysappointmentforpatient</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>Get Todays Appointment for Doctor</servlet-name>
     <servlet-class>docs.GetTodaysAppointmentForDoctor</servlet-class>
@@ -225,6 +224,25 @@
     <servlet-name>Delete All Schedule for Date</servlet-name>
     <url-pattern>/deleteallschedulefordate</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>Update Appointment Flag</servlet-name>
+    <servlet-class>docs.UpdateAppointmentFlag</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Update Appointment Flag</servlet-name>
+    <url-pattern>/updateappointmentflag</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>Get Live Serial</servlet-name>
+    <servlet-class>docs.GetLiveSchedule</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Get Live Serial</servlet-name>
+    <url-pattern>/getliveserial</url-pattern>
+  </servlet-mapping>
+  
   <display-name>Doctor</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

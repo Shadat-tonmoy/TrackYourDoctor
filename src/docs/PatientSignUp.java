@@ -60,7 +60,7 @@ public class PatientSignUp extends HttpServlet {
 					
 					user_id = res.getInt("user_id");						
 				}
-				String sql2 = "insert into patient_detail (user_id,first_name,last_name,email,date_of_birth,address,contact_no) values ('" + user_id + "','"+firstName + "','" + lastName + "','" + email + "','"+dateOfBirth+"','"+address+",'"+contactNo+"')"; 
+				String sql2 = "insert into patient_detail (user_id,first_name,last_name,email,date_of_birth,address,contact_no) values ('" + user_id + "','"+firstName + "','" + lastName + "','" + email + "','"+dateOfBirth+"','"+address+"','"+contactNo+"')"; 
 				int rows2 = statement.executeUpdate(sql2);
 				if(rows2>0)
 				{

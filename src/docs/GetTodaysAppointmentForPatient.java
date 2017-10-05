@@ -71,6 +71,7 @@ public class GetTodaysAppointmentForPatient extends HttpServlet {
 					String doctorDegree= resultSet.getString("degree");
 					String doctorFieldOfTreatment= resultSet.getString("field_of_treatment");
 					String doctorContactNo = resultSet.getString("contact_number");
+					String doctorId = resultSet.getString("doctor_id");
 					JSONObject jsonObject = new JSONObject();
 					
 					jsonObject.put("day", day);
@@ -88,6 +89,7 @@ public class GetTodaysAppointmentForPatient extends HttpServlet {
 					jsonObject.put("fieldOfTreatment",doctorFieldOfTreatment);
 					jsonObject.put("contactNo",doctorContactNo);
 					jsonObject.put("clinicAddress", clinicAddress);
+					jsonObject.put("doctorId",doctorId);
 					jsonArray.add(jsonObject);
 					rows++;					
 				}

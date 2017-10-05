@@ -576,7 +576,9 @@ app.controller("doctorDashboardController",function($scope,$rootScope,$http,$tim
 		else $scope.clinicListVisible = true;
 			
 	}
+	$scope.totalSerial = 0;
 	$scope.noAppointmentFoundForToday = false;
+	$scope.moreMenuVisible = {};
 	$scope.getTodaysAppointmentForDoctor = function (id,clinicId)
 	{
 		
@@ -597,13 +599,53 @@ app.controller("doctorDashboardController",function($scope,$rootScope,$http,$tim
 			if(isObject)
 			{
 				$scope.todaysAppointmentForDoctor = response.data;
-				$scope.noAppointmentFoundForToday = false;
+				for(var i=0;i<$scope.todaysAppointmentForDoctor.length;i++)
+				{
+					$scope.todaysAppointmentForDoctor[i].serialNo = 
+						$scope.todaysAppointmentForDoctor[i].appointmentId - 
+						$scope.todaysAppointmentForDoctor[0].appointmentId + 1
+						
+				}
 				
 			}
 			else if(response.data.trim()=="0")
 			{
 				$scope.noAppointmentFoundForToday = true;
 				$scope.todaysAppointmentForDoctor = null;
+			}
+		})
+	}
+	$scope.doneTreatementMsg = false;
+	$scope.lastSerialDone = -1;
+	$scope.doneTeatement = function(id){
+		
+		$http({
+			method:"POST",
+			url:"updateappointmentflag?appointmentId="+id
+		}).then(function(response){
+			console.log(response.data);
+			if(response.data.trim()=="1")
+			{
+				for(var i=0;i<$scope.todaysAppointmentForDoctor.length;i++)
+				{
+					if($scope.todaysAppointmentForDoctor[i].appointmentId
+					== id)
+					{
+						$scope.lastSerialDone = $scope.todaysAppointmentForDoctor[i].serialNo;
+					
+						$scope.todaysAppointmentForDoctor.splice(i,1);
+						$scope.doneTreatementMsg = true;
+
+						$timeout(function(){
+							$scope.doneTreatementMsg = false;
+						},5000)
+						break;
+					}
+				}
+			}
+			else if(response.data.trim()=="0")
+			{
+				 	
 			}
 		})
 		
@@ -638,6 +680,9 @@ app.config(function($routeProvider){
 	})	
 	.when("/upcomingschedule",{
 		templateUrl:"template/doctor_upcoming_schedule.jsp"
+	})	
+	.when("/makeprescription",{
+		templateUrl:"template/prescription_template.jsp"
 	})	
 	.when("/todaysschedulefordoctor",{
 		templateUrl:"template/doctor_todays_schedule.jsp"

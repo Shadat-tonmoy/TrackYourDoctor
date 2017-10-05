@@ -68,10 +68,27 @@ body{
     border-left: 5px solid white;
     margin-top: 17vh;
 }
+.consultingDoneMsg{
+
+    display: block;
+    background: rgba(39, 174, 96,1.0);
+    padding: 20px;
+    font-size: 1.5em;
+    color: white;
+    border-left: 5px solid white;
+}
 .noAppointForTodayDiv{
     background: rgba(189, 195, 199,0.7);
     height: 50vh;
     margin-top: 25vh;
     width: 95%;
+}
+.moreMenu{
+    position: relative;
+    z-index: 10;
+    background: #2C3E50;
+    color: white;
+    width: 100%;
+    height: auto;
 }
 

@@ -1,5 +1,5 @@
 var app = angular.module("patientDashboardApp",["ngRoute"]);
-app.controller("patientDashboardController",function($scope,$rootScope,$http,$timeout,$location,$anchorScroll,$routeParams){
+app.controller("patientDashboardController",function($scope,$rootScope,$http,$timeout,$interval,$location,$anchorScroll,$routeParams){
 	this.myDate = new Date();
 	this.isOpen = false;
 	$scope.isUpdate = false;
@@ -342,13 +342,13 @@ app.controller("patientDashboardController",function($scope,$rootScope,$http,$ti
 		var day = days[dateToParse.getDay()];
 		var date = dateToParse.getDate();
 		var finalDate = year + "-" + month + "-" + date;
-		var finalDate2 = 2017 + "-" + 8 + "-" + 19;
+		var finalDate2 = 2017 + "-" + 10 + "-" + 7;
 		console.log("Final Date : "+finalDate2);
 		
 		$http({
 			method:"GET",
 			url:"gettodaysappointmentforpatient?patientId="+patientId
-			+ "&date="+finalDate
+			+ "&date="+finalDate2
 		}).then(function(response){
 			console.log(response.data);
 			var isObject = angular.isObject(response.data)
@@ -531,7 +531,50 @@ app.controller("patientDashboardController",function($scope,$rootScope,$http,$ti
 			}
 		}
 		$scope.upcomingDateArray = dateArray;
-//		 
+	}
+	$scope.lastConsulted = 0;
+	$scope.getLiveSerial = function(patientId,doctorId,clinicId)
+	{
+		var dateToParse = new Date();
+		var year = dateToParse.getFullYear();
+		var month = dateToParse.getMonth() + 1;
+		var date = dateToParse.getDate();
+		var finalDate = year + "-" + month + "-" + date;
+		var finalDate2 = 2017 + "-" + 10 + "-" + 7;
+		var sendRequest = function(){
+			//alert("sending....");
+			$http({
+				method:"GET",
+				url:"getliveserial?doctor_id="+doctorId+"&clinic_id="+
+				clinicId+"&date="+finalDate2
+			}).then(function(response){
+				console.log(response.data);
+				var isObject = angular.isObject(response.data);
+				if(isObject)
+				{
+					$scope.liveSerial = response.data;
+					for(var i=0;i<$scope.liveSerial.length;i++)
+					{
+						$scope.liveSerial[i].serialNo = 
+							$scope.liveSerial[i].appointmentId - 
+							$scope.liveSerial[0].appointmentId + 1
+						if($scope.liveSerial[i].isDone == 1)
+							$scope.lastConsulted = $scope.liveSerial[i].serialNo;
+						
+							
+					}
+					
+				}
+				else if(response.data.trim()=="0")
+				{
+					
+					$scope.liveSerial = null;
+				}
+			})
+		}
+		sendRequest();
+		
+		$interval(sendRequest,5000)
 		
 	}
 	
@@ -572,6 +615,9 @@ app.config(function($routeProvider){
 	})
 	.when("/doctordashboard/updated",{
 		templateUrl:"template/doctor_account.jsp"
+	})
+	.when("/viewliveserials",{
+		templateUrl:"template/view_live_serial.jsp"
 	})
 	.when("/update",{
 		templateUrl:"template/update_doctor_profile.jsp"

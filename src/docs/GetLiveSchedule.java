@@ -17,17 +17,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-
-@WebServlet("/GetTodaysAppointmentForDoctor")
-public class GetTodaysAppointmentForDoctor extends HttpServlet {
-	
+@WebServlet("/GetLiveSchedule")
+public class GetLiveSchedule extends HttpServlet {
 	boolean connectionSuccess = false;
 	DBConnection connection;
 	
-    public GetTodaysAppointmentForDoctor() {
+    public GetLiveSchedule() {
         super();
     }
-    
     public void init(ServletConfig config) throws ServletException {
     	connection = new DBConnection();
     	if(connection.getConnection())
@@ -35,9 +32,9 @@ public class GetTodaysAppointmentForDoctor extends HttpServlet {
     		connectionSuccess = true;    		
     	}
 	}
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	if(connectionSuccess)
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(connectionSuccess)
     	{
     		String date = request.getParameter("date");
     		String doctorId = request.getParameter("doctor_id");
@@ -100,12 +97,10 @@ public class GetTodaysAppointmentForDoctor extends HttpServlet {
 				e.printStackTrace();
 			}
     	}
-	
 	}
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 	}
 
 }

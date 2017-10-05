@@ -14,65 +14,52 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/AddDoctorAppointment")
-public class AddDoctorAppointment extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+@WebServlet("/UpdateAppointmentFlag")
+public class UpdateAppointmentFlag extends HttpServlet {
 	boolean connectionSuccess = false;
 	DBConnection connection;
-	
-    public AddDoctorAppointment() {
+    public UpdateAppointmentFlag() {
         super();
     }
     
 	public void init(ServletConfig config) throws ServletException {
 		connection = new DBConnection();
-    	if(connection.getConnection())
-    	{
-    		connectionSuccess = true;    		
-    	}
+		if(connection.getConnection())
+		{
+			connectionSuccess = true;
+		}
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 	
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(connectionSuccess)
-    	{
-    		String doctorId = request.getParameter("doctorId");
-			String clinicId = request.getParameter("clinicId");
-			String patientId = request.getParameter("patientId");
-			String scheduleId = request.getParameter("scheduleId");
-			String day = request.getParameter("date");
-			//System.out.println(doctorId + clinicId + day + startHour + endHour);
+		{
+			String appointmentId = request.getParameter("appointmentId");
 			Connection conn = connection.connection;
 			try {
 				Statement statement = conn.createStatement();
-				String sql = "insert into doctor_appointment (doctor_id,patient_id,clinic_id,schedule_id,date_of_appointment,isDone"
-						+ ") values ('"+doctorId+"','"+patientId+"','"+clinicId+"','"+scheduleId+"',"
-						+ "'"+day+"','0')";
-				System.out.println(doctorId + " " + clinicId + " " + patientId + " " + day);
-				int result = statement.executeUpdate(sql);
-				if(result>0)
+				String sql = "update doctor_appointment set isDone='1' where appointment_id = '"+appointmentId+"'";
+				int rows = statement.executeUpdate(sql);
+				if(rows>0)
 				{
 					PrintWriter pw = response.getWriter();
-					pw.println(result);
+	        		pw.print("1");
 				}
-				else 
+				else
 				{
 					PrintWriter pw = response.getWriter();
-					pw.println("0");
+	        		pw.print("0");
 					
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			int rows;
-    	}
-	
+			
+			
+		}
 	}
-
 }
