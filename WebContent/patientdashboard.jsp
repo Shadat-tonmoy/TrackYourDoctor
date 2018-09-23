@@ -24,7 +24,7 @@
 			<li><a href="#!account"> <span class="glyphicon glyphicon-user"> </span> Your Account</a></li>
 			<li><a href="#!todaysappointment"> <span class="glyphicon glyphicon-cloud-upload"> </span> Today's Appointment</a></li>
 			<li><a href="#!upcomingappointment"> <span class="glyphicon glyphicon-cloud-upload"> </span> Upcoming Appointment</a></li>
-			<li><a href="#!notification"><span class="glyphicon glyphicon-bell"></span> Notifications </a></li>	
+			<li><a href="#!notification"><span class="glyphicon glyphicon-bell"></span> Notifications <span ng-show="numOfNotification>0" class="notificationCount">{{numOfNotification}}</span></a></li>	
 			<li><a href="logout.jsp"><span class="glyphicon glyphicon-circle-arrow-left"></span> Logout</a></li>		
 		</ul>
 	</div>

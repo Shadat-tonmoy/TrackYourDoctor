@@ -331,6 +331,7 @@ app.controller("patientDashboardController",function($scope,$rootScope,$http,$ti
 	 * method to get today's schedule
 	 * */
 	$scope.getTodaysAppointment = function(patientId){
+		
 		var days = ["Sunday","Monday","Tuesday","Wedensday",
 			"Thrusday","Friday","Saturday"];
 		var months = ["January","February","March","April",
@@ -342,7 +343,7 @@ app.controller("patientDashboardController",function($scope,$rootScope,$http,$ti
 		var day = days[dateToParse.getDay()];
 		var date = dateToParse.getDate();
 		var finalDate = year + "-" + month + "-" + date;
-		var finalDate2 = 2017 + "-" + 10 + "-" + 7;
+		var finalDate2 = 2017 + "-" + 10 + "-" + 14;
 		console.log("Final Date : "+finalDate2);
 		
 		$http({
@@ -356,19 +357,6 @@ app.controller("patientDashboardController",function($scope,$rootScope,$http,$ti
 			{
 				$scope.todaysAppointment= response.data;
 				$scope.noAppointmentForToday = false;
-//				for(var i=0;i<$scope.upcomingAppointment.length;i++)
-//				{
-//					var dateToParse = $scope.upcomingAppointment[i].day;
-//					var dateToModify = new Date(dateToParse);
-//					var year = dateToModify.getFullYear();
-//					var month = months[dateToModify.getMonth()];
-//					var day = days[dateToModify.getDay()];
-//					var date = dateToModify.getDate();
-//					var finalDate = day + " | " + date +" "+month+" , "+year;
-//					$scope.upcomingAppointment[i].day = finalDate;
-//					//console.log(date + " Year : "+year+" Month : "+month+" day : "+day);
-//				}
-//				window.location.href = "#!doctortoappoint";
 			}
 			else 
 			{
@@ -532,17 +520,33 @@ app.controller("patientDashboardController",function($scope,$rootScope,$http,$ti
 		}
 		$scope.upcomingDateArray = dateArray;
 	}
-	$scope.lastConsulted = 0;
+	$scope.numOfNotification = 0;
+	$scope.notificationArray = [];
+	var index = 0;
+	var intervalPromise = null;
 	$scope.getLiveSerial = function(patientId,doctorId,clinicId)
 	{
+		Notification.requestPermission().then(function(result){
+			console.log(result);
+		})
+		$scope.lastConsultedTmp = 0;
+		$scope.lastConsulted = 0;
+		if($interval.cancel(intervalPromise))
+		{
+			console.log("cancelled");
+		}
+		else console.log("not cnacelled");
+		
 		var dateToParse = new Date();
 		var year = dateToParse.getFullYear();
 		var month = dateToParse.getMonth() + 1;
 		var date = dateToParse.getDate();
 		var finalDate = year + "-" + month + "-" + date;
-		var finalDate2 = 2017 + "-" + 10 + "-" + 7;
+		var finalDate2 = 2017 + "-" + 10 + "-" + 14;
 		var sendRequest = function(){
+			
 			//alert("sending....");
+			console.log("sending with...."+doctorId+" "+clinicId);
 			$http({
 				method:"GET",
 				url:"getliveserial?doctor_id="+doctorId+"&clinic_id="+
@@ -553,15 +557,37 @@ app.controller("patientDashboardController",function($scope,$rootScope,$http,$ti
 				if(isObject)
 				{
 					$scope.liveSerial = response.data;
+					var j=1;
 					for(var i=0;i<$scope.liveSerial.length;i++)
 					{
-						$scope.liveSerial[i].serialNo = 
-							$scope.liveSerial[i].appointmentId - 
-							$scope.liveSerial[0].appointmentId + 1
+						$scope.liveSerial[i].serialNo = j;
+						j++;
+							//$scope.liveSerial[i].appointmentId - 
+							//$scope.liveSerial[0].appointmentId + 1
 						if($scope.liveSerial[i].isDone == 1)
+						{
 							$scope.lastConsulted = $scope.liveSerial[i].serialNo;
-						
-							
+						}
+					}
+					if($scope.lastConsulted != $scope.lastConsultedTmp)
+					{
+						var notification = new Notification("#"+$scope.lastConsulted +  " is Finished");
+						var timeToParse = new Date();
+						var hour = timeToParse.getHours();
+						var minute = timeToParse.getMinutes();
+						var am_pm = "AM";
+						if(hour>12)
+						{
+							hour = hour - 12;
+							am_pm = "PM";
+						}
+						$scope.notificationArray[index] = {
+								"msg":"Consulting patient with Serial No. "+$scope.lastConsulted +  " is Finished",
+								"time":hour+":"+minute+" "+am_pm
+						}
+						index++;
+						$scope.lastConsultedTmp = $scope.lastConsulted;
+						$scope.numOfNotification++;
 					}
 					
 				}
@@ -573,9 +599,13 @@ app.controller("patientDashboardController",function($scope,$rootScope,$http,$ti
 			})
 		}
 		sendRequest();
+		intervalPromise = $interval(sendRequest,5000);
 		
-		$interval(sendRequest,5000)
-		
+	}
+	
+	$scope.resetNotificationCount = function()
+	{
+		$scope.numOfNotification = 0;
 	}
 	
 	
@@ -608,7 +638,7 @@ app.config(function($routeProvider){
 		templateUrl:"template/patient_upcoming_appointment.jsp"
 	})
 	.when("/notification",{
-		templateUrl:"template/doctor_notification.jsp"
+		templateUrl:"template/patient_notification.jsp"
 	})
 	.when("/doctortoappoint",{
 		templateUrl:"template/doctor_list_to_appoint.jsp"

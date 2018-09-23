@@ -16,10 +16,7 @@
 <br><br><br><br><br>
 <div class="counter" ng-controller="counterController">
 	
-	<div class="row">
-		<h3>We are getting ready within...</h3>	
-	</div>
-	<br><br>
+	
 
 	<div class="row">
 		

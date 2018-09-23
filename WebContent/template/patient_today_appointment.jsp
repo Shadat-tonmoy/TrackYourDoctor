@@ -94,13 +94,16 @@ You have {{todaysAppointment.length}} appointments today
 		 		</div>
 	 		</div>
 	 		<div class="col-lg-2">
-	 			<a  data-toggle="modal" 
+	 			<!-- <a  data-toggle="modal" 
 	 				data-target="#confirmationModal"
 	 				ng-click="asignAppointmentToDelete(schedule)">
 	 				<i style="cursor:pointer;color:#000000;font-size: 2.5em;"
 	 				class="material-icons">delete-forever</i>
-	 			</a>
-	 			<a ng-click="getLiveSerial(<%= patientId %>,schedule.doctorId,schedule.clinicId)" href="#!viewliveserials">
+	 			</a> -->
+	 			<a style="color:#000000"
+	 			ng-click="getLiveSerial(<%= patientId %>,schedule.doctorId,schedule.clinicId)" href="#!viewliveserials">
+	 				<i style="cursor:pointer;color:#000000;font-size: 2.5em;" 
+	 				class="material-icons">visibility</i>
 	 				View Live Serials
 	 			</a>
 	 			

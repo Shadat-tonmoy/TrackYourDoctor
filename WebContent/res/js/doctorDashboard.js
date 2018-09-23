@@ -587,7 +587,7 @@ app.controller("doctorDashboardController",function($scope,$rootScope,$http,$tim
 		var month = dateToParse.getMonth()+1;
 		var year = dateToParse.getFullYear();
 		var date = dateToParse.getDate();
-		var finalDate = "2017" + "-" + "10" + "-" + "7";
+		var finalDate = "2017" + "-" + "10" + "-" + "14";
 		console.log(finalDate);
 		$http({
 			method:"GET",
@@ -599,13 +599,16 @@ app.controller("doctorDashboardController",function($scope,$rootScope,$http,$tim
 			if(isObject)
 			{
 				$scope.todaysAppointmentForDoctor = response.data;
+				var j = 1;
 				for(var i=0;i<$scope.todaysAppointmentForDoctor.length;i++)
 				{
-					$scope.todaysAppointmentForDoctor[i].serialNo = 
-						$scope.todaysAppointmentForDoctor[i].appointmentId - 
-						$scope.todaysAppointmentForDoctor[0].appointmentId + 1
+					$scope.todaysAppointmentForDoctor[i].serialNo = j;
+					j++;
+						//$scope.todaysAppointmentForDoctor[i].appointmentId - 
+						//$scope.todaysAppointmentForDoctor[0].appointmentId + 1
 						
 				}
+				$scope.noAppointmentFoundForToday = false;
 				
 			}
 			else if(response.data.trim()=="0")
